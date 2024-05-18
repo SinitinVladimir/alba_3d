@@ -1,6 +1,8 @@
 import './style.css'; 
 import * as THREE from 'three'; 
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'; 
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'; // Import OrbitControls
+
 
 const scene = new THREE.Scene(); // creating scene
 
@@ -28,17 +30,35 @@ scene.add(directionalLight);
 const ambientLight = new THREE.AmbientLight(0xffffff, 0.5); // soft white lights
 scene.add(ambientLight);
 
+// Background
+
+const spaceTexture = new THREE.TextureLoader().load('space.jpeg');
+scene.background = spaceTexture;
+
 // Camera target positions
 const positions = [
-  new THREE.Vector3(10, 10, 20), // Position 1
-  new THREE.Vector3(10, 100, 20), // 2
-  new THREE.Vector3(-10, 10, -20), // 3
-  new THREE.Vector3(60, 100, 25),   // 4  
-  new THREE.Vector3(10, 10, 5), // 5
-  new THREE.Vector3(10, 100, 20), // 6
-  new THREE.Vector3(-4, 10, -6), // 7
-  new THREE.Vector3(60, 100, 25)   // 8
-
+  new THREE.Vector3(-1 ,160, 0), // Position 0
+  new THREE.Vector3(-4, 12, 9), // CC
+  new THREE.Vector3(-1 ,60, 0), // Position 0
+  new THREE.Vector3(-6, 12, 6), // Crest
+  new THREE.Vector3(-1 ,60, 0), // Position 0
+  new THREE.Vector3(3, 15, 6), // Sal Un
+  new THREE.Vector3(-1 ,60, 0), // Position 0
+  new THREE.Vector3(0, 15, 6), // Muz
+  new THREE.Vector3(-1 ,60, 0), // Position 0
+  new THREE.Vector3(3, 13, 4),   //Muz  princ 
+  new THREE.Vector3(-1 ,60, 0), // Position 0
+  new THREE.Vector3(3, 15, 6), // Sal Un
+  new THREE.Vector3(-1 ,60, 0), // Position 0
+  new THREE.Vector3(-6, 12, 6), // Crest
+  new THREE.Vector3(-1 ,60, 0), // Position 0
+  new THREE.Vector3(3, 15, 6), // Sal Un
+  new THREE.Vector3(-1 ,60, 0), // Position 0
+  new THREE.Vector3(0, 15, 6), // Muz
+  new THREE.Vector3(-1 ,60, 0), // Position 0
+  new THREE.Vector3(3, 13, 4),   //Muz  princ 
+  new THREE.Vector3(-1 ,60, 0), // Position 0
+  new THREE.Vector3(3, 15, 6), // Sal Un
 ];
 let currentTargetIndex = 0; // initial position
 
@@ -55,6 +75,14 @@ loader.load(
   (error) => console.error('An error happened', error) // error log
 );
 
+window.addEventListener('click', () => {
+  manualControl = !manualControl; // Toggle control mode on click
+  controls.enabled = manualControl; // Enable or disable orbit controls based on the mode
+  if (!manualControl) {
+    camera.position.lerp(positions[currentTargetIndex], 0); // Reset position if exiting manual control
+  }
+});
+
 // event listener for mouse wheel scrolling
 window.addEventListener('wheel', (event) => {
   const direction = Math.sign(event.deltaY); // scroll direction check
@@ -66,45 +94,41 @@ window.addEventListener('wheel', (event) => {
   }
 });
 
-// Animation loop (GAME LOOP)
+document.addEventListener("wheel", function(e) {
+  // Prevent default scroll behavior
+  e.preventDefault();
+  
+  // Determine the scroll direction
+  let delta = e.deltaY > 0 ? 1 : -1;
+  let activeElement = document.querySelector('.location[visible]');
+  let newIndex = [...document.querySelectorAll('.location')].indexOf(activeElement) + delta;
+
+  // Ensure the newIndex wraps around the collection of articles
+  let articles = document.querySelectorAll('.location');
+  newIndex = (newIndex + articles.length) % articles.length;
+
+  // Scroll into the new article
+  articles[newIndex].scrollIntoView({ behavior: 'smooth' });
+});
+
+
+
+// // Animation loop (GAME LOOP)
+// function animate() {
+//   requestAnimationFrame(animate); // request the next frame
+//   camera.position.lerp(positions[currentTargetIndex], 0.009); // smoothly interpolating camera position on the map
+//   camera.lookAt(scene.position); // maintain focus at the center of the map
+//   renderer.render(scene, camera); // Rendering
+// }
+
 function animate() {
-  requestAnimationFrame(animate); // request the next frame
-  camera.position.lerp(positions[currentTargetIndex], 0.009); // smoothly interpolating camera position on the map
-  camera.lookAt(scene.position); // maintain focus at the center of the map
-  renderer.render(scene, camera); // Rendering
+  requestAnimationFrame(animate);
+  
+  // Interpolate camera position smoothly towards the target
+  const targetPosition = positions[currentTargetIndex];
+  camera.position.lerp(targetPosition, 0.05); // Adjust lerp factor for smoothness
+  camera.lookAt(scene.position); // Always look at the scene center or adjust as needed
+
+  renderer.render(scene, camera);
 }
 
-// // Fetch and display locations
-// fetch('./locations.php')
-//   .then(response => response.json())
-//   .then(data => {
-//     const locationsContainer = document.getElementById('locations');
-//     data.forEach(location => {
-//       const locationElement = document.createElement('div');
-//       locationElement.classList.add('location');
-
-//       locationElement.innerHTML = `
-//         <h2>${location.name}</h2>
-//         <p>${location.description}</p>
-//         <p><strong>Ticket Price:</strong> ${location.ticket_price_range}</p>
-//         <p><strong>Visiting Hours:</strong> ${location.visiting_hours}</p>
-//         <p><a href="${location.webpage}" target="_blank">More Info</a></p>
-//         <p><a href="${location.google_maps}" target="_blank">View on Map</a></p>
-//         ${location.social_media ? `<p><a href="${location.social_media}" target="_blank">Social Media</a></p>` : ''}
-//       `;
-
-//       locationsContainer.appendChild(locationElement);
-//     });
-//   })
-//   .catch(error => console.error('Error fetching locations:', error));
-
-window.addEventListener('wheel', (event) => {
-  const direction = Math.sign(event.deltaY);
-  currentTargetIndex += direction;
-  if (currentTargetIndex >= positions.length) {
-    currentTargetIndex = 0;
-  } else if (currentTargetIndex < 0) {
-    currentTargetIndex = positions.length - 1;
-  }
-  camera.position.lerp(positions[currentTargetIndex], 0.1);
-});
