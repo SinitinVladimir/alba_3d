@@ -8,78 +8,163 @@ canvas {
   display: block;
 }
 
-header {
-position: absolute;
-top: 0;
-right: o;
-
-}
 main {
   position: absolute;
+  width: 100%;
 }
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
 
-body {
-  margin: 0;
+.location {
+  background-color: rgba(255, 255, 255, 0.2);
+  border: 2px solid transparent;
+  border-radius: 10px;
+  padding: 20px;
+  transition: all 0.5s ease;
+  top: 20px;
+  height: 100vh;
+  scroll-snap-align: start;
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+.location:hover, .location:focus, .location:active {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-color: rgb(105, 77, 0);
+  border: 2px solid;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+  color: rgb(244, 255, 157);
 }
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+main {
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+}
+
+header {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  text-align: center;
+  z-index: 10;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1));
+  padding: 20px 0;
+}
+
+.bubble-text {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  color: hsl(0, 0%, 90%);
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+  user-select: none;
+  display: inline-block;
   cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  padding: 5px 10px;
+  border-radius: 10px;
+  background-color: rgba(32, 87, 52, 0.2);
+  margin: 10px 0;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+.split-char {
+  font-weight: 300;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.bubble-text:hover .split-char {
+  font-weight: 800;
+  color: hsl(16, 95%, 39%);
+  transform: translateY(-2px) scale(1.1);
+}
+
+.bubble-text .split-char:hover {
+  font-weight: 900;
+  color: hsl(358, 97%, 39%);
+  transform: translateY(-2px) scale(1.3);
+}
+
+.location {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+  padding: 40px;
+  position: relative;
+}
+
+.location-top {
+  padding-top: 10%;
+  align-self: flex-start;
+  text-align: left;
+  max-width: 30%;
+}
+
+.location-bottom {
+  align-self: flex-end;
+  text-align: center;
+  max-width: 50%;
+  position: absolute;
+  bottom: 40px;
+  right: 40px;
+}
+
+.location:hover {
+  border: 2px solid rgba(32, 87, 52, 0.75);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.75);
+}
+
+.location p {
+  font-size: 1.2rem;
+  font-weight: 500;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: rgba(56, 98, 3, 0.2);
+  color: #fff;
+  border: 3px solid rgba(32, 87, 52, 0.5);
+  align-items: center;
+}
+
+.location h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #E0E0E0;
+  padding: 0 10px;
+  margin-bottom: 20px;
+}
+
+.location:hover {
+  border: 2px solid rgba(32, 87, 52, 0.75);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.75);
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+}
+
+a:hover {
+  color: aquamarine;
 }
