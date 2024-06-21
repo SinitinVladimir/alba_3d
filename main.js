@@ -1,134 +1,150 @@
-import './style.css'; 
-import * as THREE from 'three'; 
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'; 
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'; // Import OrbitControls
+import './style.css';
+import * as THREE from 'three';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
+const scene = new THREE.Scene();
 
-const scene = new THREE.Scene(); // creating scene
-
-// setting up the camera perspective-view
-const camera = new THREE.PerspectiveCamera(
-  30, // field of view in degrees
-  window.innerWidth / window.innerHeight, // Aspect ratio
-  0.1, // near clipping plane
-  1000 // far clipping plane
-);
-camera.position.set(0, 100, 0); //  camera initial position above the scene
-camera.lookAt(0, 0, 0); // setting the camera look at the center of the scene
+// Camera setup
+const camera = new THREE.PerspectiveCamera(30, window.innerWidth / window.innerHeight, 0.1, 1000);
+camera.position.set(0, 100, 0);
+camera.lookAt(0, 0, 0);
 
 // WebGL renderer
 const renderer = new THREE.WebGLRenderer({
-  canvas: document.querySelector('#bg'), // binding rendering to an existing canvas
+    canvas: document.querySelector('#bg'),
 });
-renderer.setPixelRatio(window.devicePixelRatio); // setting the display's pixel ratio
-renderer.setSize(window.innerWidth, window.innerHeight); // setting up fullscreen renderer
+renderer.setPixelRatio(window.devicePixelRatio);
+renderer.setSize(window.innerWidth, window.innerHeight);
 
 // Lighting
-const directionalLight = new THREE.DirectionalLight(0xffffff, 1); // white directional
-directionalLight.position.set(0, 1, 0); // above the map
+const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+directionalLight.position.set(0, 1, 0);
 scene.add(directionalLight);
-const ambientLight = new THREE.AmbientLight(0xffffff, 0.5); // soft white lights
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
 scene.add(ambientLight);
 
 // Background
-
 const spaceTexture = new THREE.TextureLoader().load('space.jpeg');
 scene.background = spaceTexture;
 
-// Camera target positions
-const positions = [
-  new THREE.Vector3(-1 ,160, 0), // Position 0
-  new THREE.Vector3(-4, 12, 9), // CC
-  new THREE.Vector3(-1 ,60, 0), // Position 0
-  new THREE.Vector3(-6, 12, 6), // Crest
-  new THREE.Vector3(-1 ,60, 0), // Position 0
-  new THREE.Vector3(3, 15, 6), // Sal Un
-  new THREE.Vector3(-1 ,60, 0), // Position 0
-  new THREE.Vector3(0, 15, 6), // Muz
-  new THREE.Vector3(-1 ,60, 0), // Position 0
-  new THREE.Vector3(3, 13, 4),   //Muz  princ 
-  new THREE.Vector3(-1 ,60, 0), // Position 0
-  new THREE.Vector3(3, 15, 6), // Sal Un
-  new THREE.Vector3(-1 ,60, 0), // Position 0
-  new THREE.Vector3(-6, 12, 6), // Crest
-  new THREE.Vector3(-1 ,60, 0), // Position 0
-  new THREE.Vector3(3, 15, 6), // Sal Un
-  new THREE.Vector3(-1 ,60, 0), // Position 0
-  new THREE.Vector3(0, 15, 6), // Muz
-  new THREE.Vector3(-1 ,60, 0), // Position 0
-  new THREE.Vector3(3, 13, 4),   //Muz  princ 
-  new THREE.Vector3(-1 ,60, 0), // Position 0
-  new THREE.Vector3(3, 15, 6), // Sal Un
-];
-let currentTargetIndex = 0; // initial position
+// OrbitControls
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
+controls.dampingFactor = 0.25;
+controls.enableZoom = true;
+controls.enablePan = true;
+controls.enableRotate = true;
+controls.update();
 
 // Loading the 3D model (map)
 const loader = new GLTFLoader();
-loader.load(
-  '/models/apulumMap.glb',
-  (gltf) => {
-    scene.add(gltf.scene); // Adding the loaded model to the scene
-    camera.lookAt(gltf.scene.position); // adjusting the camera to look at the model
-    animate(); // run the animation loop
-  },
-  (xhr) => console.log(`${(xhr.loaded / xhr.total * 100)}% loaded`), // progress log in case of long loadiang
-  (error) => console.error('An error happened', error) // error log
-);
+loader.load('/models/apulumMap.glb', (gltf) => {
+    scene.add(gltf.scene);
+    camera.lookAt(gltf.scene.position);
+    animate();
+}, (xhr) => console.log(`${(xhr.loaded / xhr.total * 100)}% loaded`), (error) => console.error('An error happened', error));
 
-window.addEventListener('click', () => {
-  manualControl = !manualControl; // Toggle control mode on click
-  controls.enabled = manualControl; // Enable or disable orbit controls based on the mode
-  if (!manualControl) {
-    camera.position.lerp(positions[currentTargetIndex], 0); // Reset position if exiting manual control
-  }
-});
+// Update camera position display
+const cameraPositionDisplay = document.getElementById('camera-position');
+const interactionSwitch = document.getElementById('toggleMode');
 
-// event listener for mouse wheel scrolling
-window.addEventListener('wheel', (event) => {
-  const direction = Math.sign(event.deltaY); // scroll direction check
-  currentTargetIndex += direction; // index up or down
-  if (currentTargetIndex >= positions.length) { // to the start
-    currentTargetIndex = 0;
-  } else if (currentTargetIndex < 0) { // to the end
-    currentTargetIndex = positions.length - 1;
-  }
-});
+let manualControl = true; // Start with manual control
+let isMoving = false; // Flag to check if the camera is currently moving
 
-document.addEventListener("wheel", function(e) {
-  // Prevent default scroll behavior
-  e.preventDefault();
-  
-  // Determine the scroll direction
-  let delta = e.deltaY > 0 ? 1 : -1;
-  let activeElement = document.querySelector('.location[visible]');
-  let newIndex = [...document.querySelectorAll('.location')].indexOf(activeElement) + delta;
-
-  // Ensure the newIndex wraps around the collection of articles
-  let articles = document.querySelectorAll('.location');
-  newIndex = (newIndex + articles.length) % articles.length;
-
-  // Scroll into the new article
-  articles[newIndex].scrollIntoView({ behavior: 'smooth' });
-});
-
-
-
-// // Animation loop (GAME LOOP)
-// function animate() {
-//   requestAnimationFrame(animate); // request the next frame
-//   camera.position.lerp(positions[currentTargetIndex], 0.009); // smoothly interpolating camera position on the map
-//   camera.lookAt(scene.position); // maintain focus at the center of the map
-//   renderer.render(scene, camera); // Rendering
-// }
-
-function animate() {
-  requestAnimationFrame(animate);
-  
-  // Interpolate camera position smoothly towards the target
-  const targetPosition = positions[currentTargetIndex];
-  camera.position.lerp(targetPosition, 0.05); // Adjust lerp factor for smoothness
-  camera.lookAt(scene.position); // Always look at the scene center or adjust as needed
-
-  renderer.render(scene, camera);
+function updateCameraPositionDisplay() {
+    const { x, y, z } = camera.position;
+    cameraPositionDisplay.textContent = `Camera Position: x=${x.toFixed(2)}, y=${y.toFixed(2)}, z=${z.toFixed(2)}`;
 }
 
+// Camera target positions and corresponding content
+const positions = [
+    new THREE.Vector3(-1, 160, 0),
+    new THREE.Vector3(-4, 12, 9),
+    new THREE.Vector3(-1, 60, 0),
+    new THREE.Vector3(-6, 12, 6),
+    new THREE.Vector3(-1, 60, 0),
+    new THREE.Vector3(3, 15, 6),
+    new THREE.Vector3(-1, 60, 0),
+    new THREE.Vector3(0, 15, 6),
+    new THREE.Vector3(-1, 60, 0),
+    new THREE.Vector3(3, 13, 4),
+];
+let currentTargetIndex = 0; // initial position
+
+interactionSwitch.addEventListener('change', () => {
+    manualControl = !interactionSwitch.checked;
+    controls.enabled = manualControl;
+    if (!manualControl) {
+        updateContent();
+    }
+});
+
+function moveToPosition(targetPosition) {
+    const duration = 2000; // 2 seconds
+    const startPosition = new THREE.Vector3().copy(camera.position);
+    const endPosition = new THREE.Vector3().copy(targetPosition);
+    const startTime = performance.now();
+
+    function animateMove() {
+        const elapsedTime = performance.now() - startTime;
+        const t = Math.min(elapsedTime / duration, 1); // Clamp time to [0, 1]
+
+        camera.position.lerpVectors(startPosition, endPosition, t);
+        camera.lookAt(scene.position);
+
+        if (t < 1) {
+            requestAnimationFrame(animateMove);
+        } else {
+            isMoving = false; // Movement finished
+        }
+    }
+
+    isMoving = true;
+    requestAnimationFrame(animateMove);
+}
+
+// Event listener for mouse wheel scrolling
+window.addEventListener('wheel', (event) => {
+    if (!manualControl && !isMoving) {
+        const direction = Math.sign(event.deltaY);
+        currentTargetIndex += direction;
+        if (currentTargetIndex >= positions.length) {
+            currentTargetIndex = 0;
+        } else if (currentTargetIndex < 0) {
+            currentTargetIndex = positions.length - 1;
+        }
+        moveToPosition(positions[currentTargetIndex]);
+        updateContent();
+    }
+});
+
+function updateContent() {
+    const locationElements = document.querySelectorAll('.location');
+    locationElements.forEach((element, index) => {
+        if (index === currentTargetIndex) {
+            element.style.display = 'flex';
+        } else {
+            element.style.display = 'none';
+        }
+    });
+}
+
+// Animation loop
+function animate() {
+    requestAnimationFrame(animate);
+    if (manualControl) {
+        controls.update();
+    }
+    renderer.render(scene, camera);
+    updateCameraPositionDisplay();
+}
+
+animate();
+
+// Handling window resize
+window.addEventListener('resize', () => {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+});

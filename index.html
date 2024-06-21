@@ -8,39 +8,17 @@
   <body>
     <canvas id="bg"></canvas>
     <header>
-      <h1 class="bubble-text">
-          <!-- split -->
-          B<span class="split-char">i</span>n<span class="split-char">e</span> <span class="split-char">a</span><span class="split-char">ț</span>i <span class="split-char">v</span>e<span class="split-char">n</span>i<span class="split-char">t</span> <span class="split-char">l</span>a <span class="split-char">C</span>e<span class="split-char">t</span>a<span class="split-char">t</span>e<span class="split-char">a</span> <span class="split-char">A</span>l<span class="split-char">b</span>a <span class="split-char">C</span>a<span class="split-char">r</span>o<span class="split-char">l</span>i<span class="split-char">n</span>a
-      </h1>
+      <h1>Welcome To ALBA IULIA</h1>
   </header>
   
   <main>
-    <!-- <article class="location">
-      <div class="location-top" style="position: fixed; top: 50%; left: 0; transform: translateY(-50%);">
-          <button style="padding: 10px 20px; font-size: 16px; color: #fff; background-color: #0078d4; border: none; border-radius: 5px; cursor: pointer; box-shadow: 0 0 15px #0078d4; position: absolute; left: 50%; transform: translateX(-50%); animation: glow 1.5s infinite alternate;">
-              Left Button
-          </button>
-      </div>
-      <div class="location-bottom" style="position: fixed; top: 50%; right: 0; transform: translateY(-50%);">
-          <button style="padding: 10px 20px; font-size: 16px; color: #fff; background-color: #0078d4; border: none; border-radius: 5px; cursor: pointer; box-shadow: 0 0 15px #0078d4; position: absolute; right: 50%; transform: translateX(50%); animation: glow 1.5s infinite alternate;">
-              Right Button
-          </button>
-      </div>
-  </article>
+
   
-  <style>
-  @keyframes glow {
-      from {
-          box-shadow: 0 0 10px #0078d4;
-      }
-      to {
-          box-shadow: 0 0 20px #0078d4;
-      }
-  }
-  </style> -->
-  
-    <article class="location"><div class="location-top"></div>
-      <div class="location-bottom"> </div></article>
+    <article class="location">
+      <div class="location-top"></div>
+      <div class="location-bottom"> </div>
+    </article>
+    
     <article class="location">
       <div class="location-top">
 
@@ -311,7 +289,13 @@
     </div>
   </article>
 
-    </maint>
+    </main>
+    <div id="camera-position" style="position: absolute; top: 10px; left: 10px; color: white; background: rgba(0, 0, 0, 0.5); padding: 5px; border-radius: 5px; z-index: 3;">
+      Camera Position: 
+  </div>
+  <div id="interaction-switch" style="position: absolute; top: 50px; left: 10px; color: white; background: rgba(0, 0, 0, 0.5); padding: 5px; border-radius: 5px; z-index: 3;">
+    Interaction Mode: <input type="checkbox" id="toggleMode"> List/Scroll
+</div>
     <script type="module" src="/main.js"></script>
   </body>
 </html>
