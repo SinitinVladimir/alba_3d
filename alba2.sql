@@ -1,17 +1,128 @@
-INSERT INTO locations (title, catch_phrase, description, short_description, ticket_price, visiting_hours, more_info_link, map_link, social_media_facebook, nearest_coffee, nearest_coffee_location, taxi_link, location_coordinates, location_camera_type)
+INSERT INTO locations (
+    title, catch_phrase, description, short_description, ticket_price, 
+    visiting_hours, more_info_link, map_link, social_media_facebook, 
+    nearest_coffee, taxi_link, location_coordinates, location_camera_type,
+    social_media_instagram, social_media_youtube, social_media_website, 
+    social_media_tiktok, social_media_x, expiration_date, updated_at
+)
 VALUES
-    ('Catedrala Încoronării', 'Trăiește istoria în inima Transilvaniei.', 'Catedrala Încoronării, o bijuterie arhitecturală a stilului bizantin, este locul unde au fost încoronați regii României Mari.', 'Bijuterie arhitecturală bizantină', 'Gratuit', 'Luni-Duminică: 8:00 - 20:00', 'https://www.facebook.com/pages/Catedrala-Încoronării-din-Alba-Iulia/1419690855000310', 'https://www.google.com/maps/place/Reunification+Cathedral/@46.0684432,23.569584,20.86z/data=!4m14!1m7!3m6!1s0x474ea7dfa6261bef:0xfc247b1b6dc5a1c2!2sFramm''s!8m2!3d46.0701456!4d23.5700002!16s%2Fg%2F11b5wmz29w!3m5!1s0x474ea7de5d42eb85:0x5a46bdcc8633226f!8m2!3d46.0684313!4d23.5697697!16s%2Fm%2F0hhvwhs?entry=ttu', 'Framm''s', 'https://www.google.com/maps/place/Framm''s/@46.0701456,23.5674199,17z/data=!3m1!4b1!4m6!3m5!1s0x474ea7dfa6261bef:0xfc247b1b6dc5a1c2!8m2!3d46.0701456!4d23.5700002!', NULL, '46.0684432,23.569584', 'Outdoor'),
-
-    ('Muzeul Național al Unirii', 'Descoperă trecutul glorios al României.', 'Muzeul oferă o incursiune fascinantă în istoria României, de la antichitate până la Marea Unire.', 'Incursiune în istoria României', 'Adulți: 10 RON, Studenți/Pensionari: 5 RON', 'Marți-Duminică: 10:00 - 18:00, Luni: Închis', 'https://www.facebook.com/muzeulnationalaluniriialbaiulia/', 'https://www.google.com/maps/place/The+National+Museum+of+the+Union/@46.06793,23.570371,19.18z/data=!4m14!1m7!3m6!1s0x474ea7dfa6261bef:0xfc247b1b6dc5a1c2!2sFramm''s!8m2!3d46.0701456!4d23.5700002!16s%2Fg%2F11b5wmz29w!3m5!1s0x474ea7de3ef8d6d3:0x4a99b3ea09ea7435!8m2!3d46.0681591!4d23.5710084!16s%2Fm%2F0gh7x_3?entry=ttu', 'La Carută La Măruță, La Butoaie, La Vizitiu', 'https://www.google.com/maps/place/La+Carută+La+Măruță/@46.0678494,23.5707635,20.55z/data=!4m14!1m7!3m6!1s0x474ea7dfa6261bef:0xfc247b1b6dc5a1c2!2sFramm''s!8m2!3d46.0701456!4d23.5700002!16s%2Fg%2F11b5wmz29w!3m5!1s0x474ea7de174edbbd:0x9f18b7eac7233abb!8m2!3d46.0678965!4d23.5706826!16s%2Fg%2F11c40qrlrq?entry=ttu', NULL, '46.06793,23.570371', 'Indoor'),
-
-    ('Sala Unirii', 'Simte vibrația momentului istoric.', 'Locul simbolic unde s-a semnat actul Unirii Transilvaniei cu România în 1918.', 'Loc simbolic al Unirii', 'Gratuitoo', 'Marți-Duminică: 10:00 - 18:00, Luni: Închis', '[Pagina1](https://mnuai.ro/sala-unirii/) [Pagina2](https://albaiuliaqr.ro/sala-unirii/)', 'https://www.google.com/maps/place/The+Union''s+Hall/@46.0680302,23.5710798,20.32z/data=!4m14!1m7!3m6!1s0x474ea7dfa6261bef:0xfc247b1b6dc5a1c2!2sFramm''s!8m2!3d46.0701456!4d23.5700002!16s%2Fg%2F11b5wmz29w!3m5!1s0x474ea7de23251845:0xb47811d961ca559c!8m2!3d46.0681519!4d23.5714516!16s%2Fg%2F11b5v20zhz?entry=ttu', 'La Carută La Măruță, La Butoaie, La Vizitiu', 'https://www.google.com/maps/place/La+Carută+La+Măruță/@46.0678494,23.5707635,20.55z/data=!4m14!1m7!3m6!1s0x474ea7dfa6261bef:0xfc247b1b6dc5a1c2!2sFramm''s!8m2!3d46.0701456!4d23.5700002!16s%2Fg%2F11b5wmz29w!3m5!1s0x474ea7de174edbbd:0x9f18b7eac7233abb!8m2!3d46.0678965!4d23.5706826!16s%2Fg%2F11c40qrlrq?entry=ttu', NULL, '46.0680302,23.5710798', 'Indoor'),
-
-    ('Biblioteca Batthyaneum', 'Cărțile vechi, povești nesfârșite.', 'O bibliotecă veche de secole, adăpostind manuscrise rare și cărți de neprețuit.', 'Cărți vechi, povești nesfârșite', 'Gratuit', 'Intrare prin programare Luni-Vineri: 9:00 - 17:00, Sâmbătă-Duminică: Închis', 'https://www.facebook.com/Batthyaneum/ https://albaiuliaqr.ro/biblioteca-batthyaneum/ https://bibnat.ro/services/biblioteca-batthyaneum/', 'https://www.google.com/maps/place/Batthyaneum+Library/@46.07024,23.5702736,20.32z/data=!4m14!1m7!3m6!1s0x474ea7dfa6261bef:0xfc247b1b6dc5a1c2!2sFramm''s!8m2!3d46.0701456!4d23.5700002!16s%2Fg%2F11b5wmz29w!3m5!1s0x474ea7dfbb032f03:0x914c528bf60649b0!8m2!3d46.070213!4d23.5704819!16s%2Fg%2F121xw8s1?entry=ttu', 'Framm''s, Mystic, Cafe Lala', 'https://www.google.com/maps/place/Framm''s/@46.0701456,23.5674199,17z/data=!3m1!4b1!4m6!3m5!1s0x474ea7dfa6261bef:0xfc247b1b6dc5a1c2!8m2!3d46.0701456!4d23.5700002!', NULL, '46.07024,23.5702736', 'Indoor'),
-
-    ('Grădina Publică', 'Relaxează-te în mijlocul naturii.', 'Oază de verdeață în centrul orașului, perfectă pentru o plimbare relaxantă sau o pauză de prânz.', 'Oază de verdeață', 'Gratuit', 'Acces nelimitat', 'https://albaiuliaqr.ro/gradina-publica/', 'https://www.google.com/maps/place/Alba+Iulia+Public+Garden/@46.0668084,23.568171,18.5z/data=!4m14!1m7!3m6!1s0x474ea7dfa6261bef:0xfc247b1b6dc5a1c2!2sFramm''s!8m2!3d46.0701456!4d23.5700002!16s%2Fg%2F11b5wmz29w!3m5!1s0x474ea7df99b2e4c7:0xa90e477eb93a59c0!8m2!3d46.0666593!4d23.5684733!16s%2Fm%2F0qgdm?entry=ttu', 'Cafe Lala, Café Italia, Mystic', 'https://www.google.com/maps/place/Cafe+Lala/@46.0667186,23.5684173,17z/data=!3m1!4b1!4m6!3m5!1s0x474ea7dfa6261bef:0xfc247b1b6dc5a1c2!8m2!3d46.0701456!4d23.5700002!', NULL, '46.0668084,23.568171', 'Outdoor'),
-
-    ('Grădina Zoologică', 'Explorează lumea animalelor.', 'O experiență educativă pentru toate vârstele, cu animale din diverse colțuri ale lumii.', 'Experiență educativă cu animale', 'Adulți: 20 RON, Copii: 10 RON', 'Marți-Duminică: 9:00 - 17:00, Luni: Închis', 'https://www.facebook.com/Zoological-Garden-Alba-Iulia-110700611605408/', 'https://www.google.com/maps/place/Alba+Iulia+Zoo/@46.0646191,23.5836854,16z/data=!4m14!1m7!3m6!1s0x474ea7dfa6261bef:0xfc247b1b6dc5a1c2!2sFramm''s!8m2!3d46.0701456!4d23.5700002!16s%2Fg%2F11b5wmz29w!3m5!1s0x474ea80235e0cf15:0x1a578d857f1a9c09!8m2!3d46.0644353!4d23.5843963!16s%2Fm%2F09g6wx?entry=ttu', 'Framm''s, Café Italia, Mystic', 'https://www.google.com/maps/place/Framm''s/@46.0701456,23.5674199,17z/data=!3m1!4b1!4m6!3m5!1s0x474ea7dfa6261bef:0xfc247b1b6dc5a1c2!8m2!3d46.0701456!4d23.5700002!', NULL, '46.0646191,23.5836854', 'Outdoor'),
-
-    ('Cetatea Alba Carolina', 'Descoperă fortăreața istorică.', 'Una dintre cele mai bine conservate cetăți bastionare din Europa, datând din secolul al XVIII-lea.', 'Cetate bastionară', 'Gratuit', 'Acces nelimitat', 'https://www.facebook.com/albacarolinaturistica/', 'https://www.google.com/maps/place/Alba+Carolina+Festung/@46.0691585,23.570512,17z/data=!3m1!4b1!4m6!3m5!1s0x474ea7dfa6261bef:0xfc247b1b6dc5a1c2!8m2!3d46.0701456!4d23.5700002!16s%2Fg%2F11b5wmz29w', 'Framm''s, Mystic, Café Italia', NULL, '46.0691585,23.570512', 'Outdoor'),
-
-    ('Muzeul de Istorie al Transilvaniei', 'Descoperă istoria captivantă a regiunii.', 'Muzeul găzduiește o colecție impresionantă de artefacte din toate perioadele istorice ale Transilvaniei.', 'Colecție impresionantă de artefacte', 'Adulți: 15 RON, Studenți/Pensionari: 7 RON', 'Marți-Duminică: 9:00 - 17:00, Luni: Închis', 'https://www.facebook.com/muzeuldeistoriealtransilvaniei/', 'https://www.google.com/maps/place/National+History+Museum+of+Transylvania/@46.0650137,23.5827013,17z/data=!3m1!4b1!4m6!3m5!1s0x474ea7dfa6261bef:0xfc247b1b6dc5a1c2!8m2!3d46.0701456!4d23.5700002!16s%2Fg%2F11b5wmz29w', 'Framm''s, Café Italia, Mystic', NULL, '46.0650137,23.5827013', 'Indoor');
+    (
+        'Catedrala Încoronării', 
+        'Trăiește istoria în inima Transilvaniei.', 
+        'Catedrala Încoronării, o bijuterie arhitecturală a stilului bizantin, este locul unde au fost încoronați regii României Mari.', 
+        'Bijuterie arhitecturală bizantină', 
+        'Gratuit', 
+        'Luni-Duminică: 8:00 - 20:00', 
+        'https://www.facebook.com/pages/Catedrala-Încoronării-din-Alba-Iulia/1419690855000310', 
+        'https://www.google.com/maps/place/Reunification+Cathedral/@46.0684432,23.569584,20.86z/data=!4m14!1m7!3m6!1s0x474ea7dfa6261bef:0xfc247b1b6dc5a1c2!2sFramm\'s!8m2!3d46.0701456!4d23.5700002!16s%2Fg%2F11b5wmz29w!3m5!1s0x474ea7de5d42eb85:0x5a46bdcc8633226f!8m2!3d46.0684313!4d23.5697697!16s%2Fm%2F0hhvwhs?entry=ttu', 
+        'Framm\'s', 
+        'https://www.google.com/maps/place/Framm\'s/@46.0701456,23.5674199,17z/data=!3m1!4b1!4m6!3m5!1s0x474ea7dfa6261bef:0xfc247b1b6dc5a1c2!8m2!3d46.0701456!4d23.5700002!', 
+        '46.0684432,23.569584', 
+        'Outdoor', 
+        NULL, NULL, NULL, NULL, NULL, NULL, NULL, CURRENT_TIMESTAMP
+    ),
+    (
+        'Muzeul Național al Unirii', 
+        'Descoperă trecutul glorios al României.', 
+        'Muzeul oferă o incursiune fascinantă în istoria României, de la antichitate până la Marea Unire.', 
+        'Incursiune în istoria României', 
+        'Adulți: 10 RON, Studenți/Pensionari: 5 RON', 
+        'Marți-Duminică: 10:00 - 18:00, Luni: Închis', 
+        'https://www.facebook.com/muzeulnationalaluniriialbaiulia/', 
+        'https://www.google.com/maps/place/The+National+Museum+of+the+Union/@46.06793,23.570371,19.18z/data=!4m14!1m7!3m6!1s0x474ea7dfa6261bef:0xfc247b1b6dc5a1c2!2sFramm\'s!8m2!3d46.0701456!4d23.5700002!16s%2Fg%2F11b5wmz29w!3m5!1s0x474ea7de3ef8d6d3:0x4a99b3ea09ea7435!8m2!3d46.0681591!4d23.5710084!16s%2Fm%2F0gh7x_3?entry=ttu', 
+        'La Carută La Măruță', 
+        'https://www.google.com/maps/place/La+Carută+La+Măruță/@46.0678494,23.5707635,20.55z/data=!4m14!1m7!3m6!1s0x474ea7dfa6261bef:0xfc247b1b6dc5a1c2!2sFramm\'s!8m2!3d46.0701456!4d23.5700002!16s%2Fg%2F11b5wmz29w!3m5!1s0x474ea7de174edbbd:0x9f18b7eac7233abb!8m2!3d46.0678965!4d23.5706826!16s%2Fg%2F11c40qrlrq?entry=ttu', 
+        '46.06793,23.570371', 
+        'Indoor', 
+        NULL, NULL, NULL, NULL, NULL, NULL, NULL, CURRENT_TIMESTAMP
+    ),
+    (
+        'Sala Unirii', 
+        'Simte vibrația momentului istoric.', 
+        'Locul simbolic unde s-a semnat actul Unirii Transilvaniei cu România în 1918.', 
+        'Loc simbolic al Unirii', 
+        'Gratuit', 
+        'Marți-Duminică: 10:00 - 18:00, Luni: Închis', 
+        '[Pagina1](https://mnuai.ro/sala-unirii/)', 
+        'https://www.google.com/maps/place/The+Union\'s+Hall/@46.0680302,23.5710798,20.32z/data=!4m14!1m7!3m6!1s0x474ea7dfa6261bef:0xfc247b1b6dc5a1c2!2sFramm\'s!8m2!3d46.0701456!4d23.5700002!16s%2Fg%2F11b5wmz29w!3m5!1s0x474ea7de23251845:0xb47811d961ca559c!8m2!3d46.0681519!4d23.5714516!16s%2Fg%2F11b5v20zhz?entry=ttu', 
+        'La Carută La Măruță', 
+        'https://www.google.com/maps/place/La+Carută+La+Măruță/@46.0678494,23.5707635,20.55z/data=!4m14!1m7!3m6!1s0x474ea7dfa6261bef:0xfc247b1b6dc5a1c2!2sFramm\'s!8m2!3d46.0701456!4d23.5700002!16s%2Fg%2F11b5wmz29w!3m5!1s0x474ea7de174edbbd:0x9f18b7eac7233abb!8m2!3d46.0678965!4d23.5706826!16s%2Fg%2F11c40qrlrq?entry=ttu', 
+        '46.0680302,23.5710798', 
+        'Indoor', 
+        NULL, NULL, NULL, NULL, NULL, NULL, NULL, CURRENT_TIMESTAMP
+    ),
+    (
+        'Biblioteca Batthyaneum', 
+        'Cărțile vechi, povești nesfârșite.', 
+        'O bibliotecă veche de secole, adăpostind manuscrise rare și cărți de neprețuit.', 
+        'Cărți vechi, povești nesfârșite', 
+        'Gratuit', 
+        'Intrare prin programare Luni-Vineri: 9:00 - 17:00, Sâmbătă-Duminică: Închis', 
+        'https://www.facebook.com/Batthyaneum/', 
+        'https://www.google.com/maps/place/Batthyaneum+Library/@46.07024,23.5702736,20.32z/data=!4m14!1m7!3m6!1s0x474ea7dfa6261bef:0xfc247b1b6dc5a1c2!2sFramm\'s!8m2!3d46.0701456!4d23.5700002!16s%2Fg%2F11b5wmz29w!3m5!1s0x474ea7dfbb032f03:0x914c528bf60649b0!8m2!3d46.070213!4d23.5704819!16s%2Fg%2F121xw8s1?entry=ttu', 
+        'Framm\'s', 
+        'https://www.google.com/maps/place/Framm\'s/@46.0701456,23.5674199,17z/data=!3m1!4b1!4m6!3m5!1s0x474ea7dfa6261bef:0xfc247b1b6dc5a1c2!8m2!3d46.0701456!4d23.5700002!', 
+        '46.07024,23.5702736', 
+        'Indoor', 
+        NULL, NULL, 'https://albaiuliaqr.ro/biblioteca-batthyaneum/', NULL, NULL, NULL, NULL, CURRENT_TIMESTAMP
+    ),
+    (
+        'Muzeul Principia', 
+        'Întoarce-te în vremea romanilor.', 
+        'Explorează vestigiile romane ale cetății și descoperă viața soldaților romani.', 
+        'Vestigii romane', 
+        'Adulți: 10 RON, Studenți/Pensionari: 5 RON', 
+        'Marți-Duminică: 10:00 - 18:00, Luni: Închis', 
+        'https://castrul.apulum.ro', 
+        'https://www.google.com/maps/place/"Principia"+Museum/@46.0685291,23.5718201,18.95z/data=!4m14!1m7!3m6!1s0x474ea7dfa6261bef:0xfc247b1b6dc5a1c2!2sFramm\'s!8m2!3d46.0701456!4d23.5700002!16s%2Fg%2F11b5wmz29w!3m5!1s0x474ea7e082acdba7:0x88cf4d5c399ff8fa!8m2!3d46.068311!4d23.5720397!16s%2Fg%2F11bw3c9qzz?entry=ttu', 
+        'Carolina Cafe Alba Iulia', 
+        'https://www.google.com/maps/place/Carolina+Cafe+Alba+iulia/@46.0676866,23.5717155,19.41z/data=!4m14!1m7!3m6!1s0x474ea7dfa6261bef:0xfc247b1b6dc5a1c2!2sFramm\'s!8m2!3d46.0701456!4d23.5700002!16s%2Fg%2F11b5wmz29w!3m5!1s0x474ea7e0a458a095:0x5bb7c9c21dc69a15!8m2!3d46.0673728!4d23.5721641!16s%2Fg%2F11dy1q001w?entry=ttu', 
+        '46.0685291,23.5718201', 
+        'Indoor', 
+        NULL, NULL, 'https://www.facebook.com/castrulroman/?locale=ro_RO', NULL, NULL, NULL, NULL, CURRENT_TIMESTAMP
+    ),
+    (
+        'Bastionul Sașilor', 
+        'Apărarea medievală la superlativ.', 
+        'Un bastion de apărare impresionant, reflectând arta militară a secolului XVIII.', 
+        'Bastion de apărare', 
+        'Gratuit', 
+        'Luni-Duminică: 24/7', 
+        'https://www.facebook.com/pages/Bastionul-Sasilor-Alba-Iulia/2183164998630723', 
+        'https://www.google.com/maps/place/Bastionul+Sașilor/@46.0660828,23.5721319,18.5z/data=!4m14!1m7!3m6!1s0x474ea7dfa6261bef:0xfc247b1b6dc5a1c2!2sFramm\'s!8m2!3d46.0701456!4d23.5700002!16s%2Fg%2F11b5wmz29w!3m5!1s0x474ea7e72ac4fa8f:0x17b564f2c18fc6b5!8m2!3d46.0658862!4d23.5738568!16s%2Fg%2F1ty7317r?entry=ttu', 
+        'PUB 13 - Restaurantul Cetății', 
+        'https://www.google.com/maps/place/PUB+13+-+Restaurantul+Cetății/@46.0671882,23.5749047,18.5z/data=!4m14!1m7!3m6!1s0x474ea7dfa6261bef:0xfc247b1b6dc5a1c2!2sFramm\'s!8m2!3d46.0701456!4d23.5700002!16s%2Fg%2F11b5wmz29w!3m5!1s0x474ea7e0fb059d45:0x3b8dda34133b4d18!8m2!3d46.0679233!4d23.5756745!16s%2Fg%2F1td8xxjb?entry=ttu', 
+        '46.0660828,23.5721319', 
+        'Outdoor', 
+        NULL, NULL, NULL, NULL, NULL, NULL, NULL, CURRENT_TIMESTAMP
+    ),
+    (
+        'Catedrala Romano-Catolică', 
+        'Splendoarea gotică a Transilvaniei.', 
+        'Un monument gotic magnific, martor al istoriei medievale.', 
+        'Monument gotic', 
+        'Gratuit', 
+        'Luni-Duminică: 8:00 - 18:00', 
+        'https://www.facebook.com/pages/Catedrala-Romano-Catolica-Alba-Iulia/278366812336665', 
+        'https://www.google.com/maps/place/"Saint+Michael"+Cathedral/@46.067632,23.568485,18.5z/data=!4m14!1m7!3m6!1s0x474ea7dfa6261bef:0xfc247b1b6dc5a1c2!2sFramm\'s!8m2!3d46.0701456!4d23.5700002!16s%2Fg%2F11b5wmz29w!3m5!1s0x474ea7de727b56cb:0x5e65818a9697c490!8m2!3d46.067558!4d23.569844!16s%2Fm%2F0hzn_h0?entry=ttu', 
+        'La Carută La Măruță', 
+        'https://www.google.com/maps/place/La+Carută+La+Măruță/@46.0678494,23.5707635,20.55z/data=!4m14!1m7!3m6!1s0x474ea7dfa6261bef:0xfc247b1b6dc5a1c2!2sFramm\'s!8m2!3d46.0701456!4d23.5700002!16s%2Fg%2F11b5wmz29w!3m5!1s0x474ea7de174edbbd:0x9f18b7eac7233abb!8m2!3d46.0678965!4d23.5706826!16s%2Fg%2F11c40qrlrq?entry=ttu', 
+        '46.067632,23.568485', 
+        'Indoor', 
+        NULL, NULL, 'https://albaiuliaqr.ro/catedrala-romano-catolica-sf-mihail/?fbclid=IwZXh0bgNhZW0CMTAAAR3EBG29C09SNxiy6wvScg7pEQ8NJLKyYQ-uzmoIhPw2nDrLKifOY2WrIhs_aem_ZmFrZWR1bW15MTZieXRlcw', NULL, NULL, NULL, NULL, CURRENT_TIMESTAMP
+    ),
+    (
+        'Poarta a III-a a Cetății', 
+        'Intră în istoria grandioasă.', 
+        'Una dintre cele mai impresionante porți baroc ale cetății, simbol al grandorii istorice.', 
+        'Poartă barocă', 
+        'Gratuit', 
+        'Luni-Duminică: 24/7', 
+        'https://albaiuliaqr.ro/poarta-a-iii-a-cetatii-alba-carolina/', 
+        'https://www.google.com/maps/place/The+3rd+Gate+of+the+Fortress/@46.0669827,23.5746734,18.5z/data=!4m14!1m7!3m6!1s0x474ea7dfa6261bef:0xfc247b1b6dc5a1c2!2sFramm\'s!8m2!3d46.0701456!4d23.5700002!16s%2Fg%2F11b5wmz29w!3m5!1s0x474ea7e0e35e0939:0xd5e3ba6be59de1e5!8m2!3d46.0671729!4d23.5744905!16s%2Fg%2F1thcr3h1?entry=ttu', 
+        'PUB 13 - Restaurantul Cetății', 
+        'https://www.google.com/maps/place/PUB+13+-+Restaurantul+Cetății/@46.0671882,23.5749047,18.5z/data=!4m14!1m7!3m6!1s0x474ea7dfa6261bef:0xfc247b1b6dc5a1c2!2sFramm\'s!8m2!3d46.0701456!4d23.5700002!16s%2Fg%2F11b5wmz29w!3m5!1s0x474ea7e0fb059d45:0x3b8dda34133b4d18!8m2!3d46.0679233!4d23.5756745!16s%2Fg%2F1td8xxjb?entry=ttu', 
+        '46.0669827,23.5746734', 
+        'Outdoor', 
+        NULL, NULL, NULL, NULL, NULL, NULL, NULL, CURRENT_TIMESTAMP
+    );
