@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <link rel="icon" type="image/svg+xml" href="/public/vite.svg">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vite App</title>
+    <title>ApeEscape</title>
     <link rel="stylesheet" href="style.css">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css">
     <script type="importmap">
         {
             "imports": {
@@ -20,27 +20,25 @@
 
 <body>
     <canvas id="bg"></canvas>
-    <header>
+    <!-- <header>
         <h1>Welcome To ALBA IULIA</h1>
-    </header>
+    </header> -->
 
     <main>
-    <?php
+    
+
+<?php
 // Database connection
 $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "alba_iulia";
 
-// Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Fetch data from database
 $sql = "SELECT * FROM locations";
 $result = $conn->query($sql);
 
@@ -50,25 +48,26 @@ if ($result->num_rows > 0) {
                 <div class="location-top">
                     <h2>' . $row["title"] . '</h2>
                     <p>' . $row["catch_phrase"] . '</p>
-                    <p>' . $row["description"] . '</p>
-                    <p>' . $row["short_description"] . '</p>
                 </div>
-                <div class="location-bottom">
-                    <p><strong>Ticket Price:</strong> ' . $row["ticket_price"] . '</p>
-                    <p><strong>Visiting Hours:</strong> ' . $row["visiting_hours"] . '</p>
-                    <p><a href="' . $row["more_info_link"] . '" target="_blank">More Info</a></p>
-                    <p><a href="' . $row["map_link"] . '" target="_blank">View on Map</a></p>
-                    <p><strong>Nearest Coffee:</strong> ' . $row["nearest_coffee"] . '</p>
-                    <p><a href="' . $row["taxi_link"] . '" target="_blank">Taxi</a></p>
-                    <div class="social-media-links">
-                        ' . (!empty($row["social_media_facebook"]) ? '<a href="' . $row["social_media_facebook"] . '" target="_blank">Facebook</a> ' : '') . '
-                        ' . (!empty($row["social_media_instagram"]) ? '<a href="' . $row["social_media_instagram"] . '" target="_blank">Instagram</a> ' : '') . '
-                        ' . (!empty($row["social_media_youtube"]) ? '<a href="' . $row["social_media_youtube"] . '" target="_blank">YouTube</a> ' : '') . '
-                        ' . (!empty($row["social_media_website"]) ? '<a href="' . $row["social_media_website"] . '" target="_blank">Website</a> ' : '') . '
-                        ' . (!empty($row["social_media_tiktok"]) ? '<a href="' . $row["social_media_tiktok"] . '" target="_blank">TikTok</a> ' : '') . '
-                        ' . (!empty($row["social_media_x"]) ? '<a href="' . $row["social_media_x"] . '" target="_blank">X</a> ' : '') . '
+                <div class="location-icons">
+                    <div class="icon" data-content="' . $row["description"] . '"><i class="fas fa-volume-up"></i></div>
+                    <div class="icon" data-content="' . $row["short_description"] . '"><i class="fas fa-eye"></i></div>
+                    <div class="icon"><a href="' . $row["map_link"] . '" target="_blank"><i class="fas fa-map-marker-alt"></i></a></div>
+                    <div class="icon"><a href="' . $row["taxi_link"] . '" target="_blank"><i class="fas fa-taxi"></i></a></div>
+                    <div class="icon" data-content="' . $row["ticket_price"] . '"><i class="fas fa-euro-sign"></i></div>
+                    <div class="icon" data-content="' . $row["visiting_hours"] . '"><i class="fas fa-clock"></i></div>
+                    <div class="icon"><a href="' . $row["nearest_coffee"] . '" target="_blank"><i class="fas fa-coffee"></i></a></div>
+                    <div class="icon"><a href="' . $row["more_info_link"] . '" target="_blank"><i class="fas fa-info-circle"></i></a></div>
                     </div>
+                    <div class="social-media">
+                        ' . (!empty($row["social_media_facebook"]) ? '<a class="icon" href="' . $row["social_media_facebook"] . '" target="_blank"><i class="fab fa-facebook-f"></i></a>' : '') . '
+                        ' . (!empty($row["social_media_instagram"]) ? '<a class="icon" href="' . $row["social_media_instagram"] . '" target="_blank"><i class="fab fa-instagram"></i></a>' : '') . '
+                        ' . (!empty($row["social_media_youtube"]) ? '<a class="icon" href="' . $row["social_media_youtube"] . '" target="_blank"><i class="fab fa-youtube"></i></a>' : '') . '
+                        ' . (!empty($row["social_media_website"]) ? '<a class="icon" href="' . $row["social_media_website"] . '" target="_blank"><i class="fas fa-globe"></i></a>' : '') . '
+                        ' . (!empty($row["social_media_tiktok"]) ? '<a class="icon" href="' . $row["social_media_tiktok"] . '" target="_blank"><i class="fab fa-tiktok"></i></a>' : '') . '
+                        ' . (!empty($row["social_media_x"]) ? '<a class="icon" href="' . $row["social_media_x"] . '" target="_blank"><i class="fab fa-twitter"></i></a>' : '') . '
                 </div>
+                <div class="location-content"></div>
               </article>';
     }
 } else {
@@ -77,7 +76,9 @@ if ($result->num_rows > 0) {
 
 $conn->close();
 ?>
-        ?>
+
+
+
     </main>
 
     <div id="camera-position" style="position: absolute; top: 10px; left: 10px; color: white; background: rgba(0, 0, 0, 0.5); padding: 5px; border-radius: 5px; z-index: 3;">
