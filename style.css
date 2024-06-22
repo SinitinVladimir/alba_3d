@@ -85,3 +85,58 @@ a {
 a:hover {
   color: aquamarine;
 }
+
+.chat-widget-container {
+  position: fixed;
+  bottom: 20px;
+  /* Adjust this value as needed */
+  right: 20px;
+  /* Adjust this value as needed */
+  width: 300px;
+  /* Adjust the width as needed */
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  /* Ensure widget is above other content */
+  font-family: Arial, sans-serif;
+}
+
+/* Style the chat messages */
+.chat-messages {
+  list-style-type: none;
+  margin: 0;
+  padding: 10px;
+  overflow-y: scroll;
+  height: 200px;
+  /* Adjust the height as needed */
+}
+
+/* Style the user input area */
+.chat-input {
+  padding: 10px;
+  border-top: 1px solid #ccc;
+}
+
+/* Style the input box */
+.chat-input input[type=text] {
+  width: calc(100% - 20px);
+  padding: 8px;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+/* Style the send button */
+.chat-input button {
+  padding: 8px 15px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}

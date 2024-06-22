@@ -1,5 +1,6 @@
 <html lang="en">
   <head>
+    <script src="https://path-to-ollama-script.js" defer></script>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -298,6 +299,63 @@
 </div>
     <script type="module" src="/main.js"></script>
 
-    say
-  </body>
+  <div id="ollama-chatbot-container"></div>
+
+<div class="chat-widget-container">
+  <ul class="chat-messages" id="chat-messages">
+    <!-- Messages will be dynamically added here -->
+  </ul>
+  <div class="chat-input">
+    <input type="text" id="user-input" placeholder="Type your message...">
+    <button onclick="sendMessage()">Send</button>
+  </div>
+</div>
+
+<!-- JavaScript to handle chat functionality -->
+    <script>
+      // Function to send user message
+      function sendMessage() {
+        var userInput = document.getElementById('user-input');
+        var message = userInput.value.trim();
+
+        if (message !== '') {
+          addMessage('user', message); // Add user message to chat
+          userInput.value = ''; // Clear input field
+
+          // Check for special responses based on user input
+          handleSpecialResponses(message);
+        }
+      }
+
+      // Function to add message to chat
+      function addMessage(sender, message) {
+        var chatMessages = document.getElementById('chat-messages');
+        var li = document.createElement('li');
+        li.textContent = message;
+        li.classList.add(sender === 'user' ? 'user-message' : 'bot-message');
+        chatMessages.appendChild(li);
+        chatMessages.scrollTop = chatMessages.scrollHeight; // Scroll to bottom of chat messages
+      }
+
+      // Function to handle special responses based on user input
+      function handleSpecialResponses(message) {
+        switch (message.toLowerCase()) {
+          case 'hello':
+            addMessage('bot', 'Hello there! I am your Alba3D assistant? What can I do for you?');
+            break;
+          case 'help':
+            addMessage('bot', 'Sure, I can help you with that. What do you need assistance with?');
+            break;
+          case "do you know about alba carolina citadel?":
+            addMessage('bot', 'Sure, I know the Alba Carolina citadel, its located in Cartagena, Colombia!');
+            break;
+          default:
+            addMessage('bot', 'Sorry, but I have too little general knowledge to be able to answer such advanced questions.');
+            break;
+        }
+      }
+    </script>
+
+
+</body>
 </html>
