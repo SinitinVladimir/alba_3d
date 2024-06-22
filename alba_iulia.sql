@@ -24,33 +24,6 @@ CREATE TABLE `locations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 CREATE TABLE `users` (
-```sql
-CREATE TABLE `locations` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `title` varchar(255) NOT NULL,
-  `description` text NOT NULL,
-  `short_description` text DEFAULT NULL,
-  `catch_phrase` varchar(255) DEFAULT NULL,
-  `ticket_price` varchar(50) DEFAULT NULL,
-  `visiting_hours` varchar(100) DEFAULT NULL,
-  `more_info_link` varchar(255) DEFAULT NULL,
-  `map_link` varchar(255) DEFAULT NULL,
-  `taxi_link` varchar(255) DEFAULT NULL,
-  `social_media_facebook` varchar(255) DEFAULT NULL,
-  `social_media_instagram` varchar(255) DEFAULT NULL,
-  `social_media_youtube` varchar(255) DEFAULT NULL,
-  `social_media_website` varchar(255) DEFAULT NULL,
-  `social_media_tiktok` varchar(255) DEFAULT NULL,
-  `social_media_x` varchar(255) DEFAULT NULL,
-  `location_coordinates` varchar(255) DEFAULT NULL,
-  `location_camera_type` varchar(255) DEFAULT NULL,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `expiration_date` date DEFAULT NULL,
-  `nearest_coffee` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-CREATE TABLE `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(50) NOT NULL,
   `password` varchar(255) NOT NULL,

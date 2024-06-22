@@ -4,6 +4,33 @@ import { GLTFLoader } from './node_modules/three/examples/jsm/loaders/GLTFLoader
 import { OrbitControls } from './node_modules/three/examples/jsm/controls/OrbitControls.js';
 
 
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.icon').forEach(function(icon) {
+        icon.addEventListener('mouseenter', function() {
+            const content = icon.getAttribute('data-content');
+            if (content) {
+                const contentDiv = icon.closest('.location').querySelector('.location-content');
+                contentDiv.innerHTML = content;
+                contentDiv.classList.add('active');
+            }
+        });
+
+        icon.addEventListener('mouseleave', function() {
+            const contentDiv = icon.closest('.location').querySelector('.location-content');
+            contentDiv.classList.remove('active');
+        });
+
+        icon.addEventListener('click', function() {
+            const content = icon.getAttribute('data-content');
+            if (content) {
+                const contentDiv = icon.closest('.location').querySelector('.location-content');
+                contentDiv.innerHTML = content;
+                contentDiv.classList.toggle('active');
+            }
+        });
+    });
+});
+
 
 
 
