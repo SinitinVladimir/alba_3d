@@ -1,7 +1,15 @@
-import './style.css';
+// import './style.css';
 import * as THREE from 'three';
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+import { GLTFLoader } from './node_modules/three/examples/jsm/loaders/GLTFLoader.js';
+import { OrbitControls } from './node_modules/three/examples/jsm/controls/OrbitControls.js';
+
+
+
+
+
+
+
+
 
 const scene = new THREE.Scene();
 
@@ -25,7 +33,7 @@ const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
 scene.add(ambientLight);
 
 // Background
-const spaceTexture = new THREE.TextureLoader().load('space.jpeg');
+const spaceTexture = new THREE.TextureLoader().load('/space.jpeg');
 scene.background = spaceTexture;
 
 // OrbitControls
